@@ -45,17 +45,21 @@ FUNCTIONS = [
 ]
 
 
+def menu_caller(option):
+    if len(OPTIONS) > option:
+        option2 = input(OPTIONS[option])
+        return FUNCTIONS[option](option2)
+
+    return FUNCTIONS[option]()
+
+
 # Requisito 12:
 def analyzer_menu():
     try:
         option = int(input(MENU_DISPLAY))
 
         if option in range(0, 7):
-            if len(OPTIONS) > option:
-                option2 = input(OPTIONS[option])
-                return FUNCTIONS[option](option2)
-
-            return FUNCTIONS[option]()
+            return menu_caller(option)
         elif option == 7:
             print("Sair.")
         else:
